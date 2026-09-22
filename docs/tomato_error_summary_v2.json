@@ -1,0 +1,28 @@
+{
+  "overall_accuracy": 0.9527638190954774,
+  "total_test_samples": 995,
+  "misclassified": 47,
+  "error_rate": 0.04723618090452261,
+  "per_class": {
+    "Early Blight": {
+      "precision": 0.9057971014492754,
+      "recall": 0.8333333333333334,
+      "support": 150
+    },
+    "Late Blight": {
+      "precision": 0.9450171821305842,
+      "recall": 0.9581881533101045,
+      "support": 287
+    },
+    "Bacterial Spot": {
+      "precision": 0.9716981132075472,
+      "recall": 0.9686520376175548,
+      "support": 319
+    },
+    "Healthy": {
+      "precision": 0.9637096774193549,
+      "recall": 1.0,
+      "support": 239
+    }
+  }
+}
