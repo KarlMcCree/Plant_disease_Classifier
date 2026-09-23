@@ -1,7 +1,6 @@
-
-```gitignore
-
-# Datasets 
+# ==============================
+# Datasets
+# ==============================
 data/kaggle_plantvillage/
 data/processed/*.pkl
 data/raw/*.jpg
@@ -9,22 +8,34 @@ data/raw/*.jpeg
 data/raw/*.png
 data/raw/live_frames/
 data/raw/predictions.csv
+*.zip
 
 
-# Trained models (large — regenerable via src/train.py)
+# ==============================
+# Trained models
+# ==============================
 ml/*.keras
 ml/*.h5
 ml/*.tflite
 ml/*.h
 ml/*_meta.json
+*.h5
+*.keras
+*.tflite
 
 
-# Training logs (regenerable)
+# ==============================
+# Training logs
+# ==============================
 logs/
 
 
-
-# Virtual environments
+# ==============================
+# Virtual environments / Python
+# ==============================
+.myvenv/
+.venv/
+venv/
 __pycache__/
 *.py[cod]
 *.so
@@ -32,37 +43,42 @@ __pycache__/
 build/
 dist/
 *.egg-info/
-.myvenv/
-.venv/
-venv/
 
 
+# ==============================
 # Jupyter
+# ==============================
 .ipynb_checkpoints/
 *.ipynb_checkpoints/
 
 
+# ==============================
 # IDE
+# ==============================
 .vscode/
 .idea/
 *.swp
 
 
-# Secrets
+# ==============================
+# Secrets / credentials
+# ==============================
+kaggle.json
 secrets.h
 .env
+.env.*
 *.key
 *.pem
 
 
+# ==============================
 # OS
+# ==============================
 .DS_Store
 Thumbs.db
 
-# Model files
-*.h5
-*.keras
-*.tflite
 
-# Pickle/cache files
+# ==============================
+# Pickle / cache files
+# ==============================
 *.pkl

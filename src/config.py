@@ -1,6 +1,5 @@
 import os
 
-# === PATHS ===
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 DATA_DIR        = os.path.join(PROJECT_ROOT, "data")
@@ -33,24 +32,27 @@ TOMATO_MODEL_TFLITE     = os.path.join(ML_DIR, "tomato_model.tflite")
 TOMATO_MODEL_META       = os.path.join(ML_DIR, "tomato_mobilenet_meta.json")
 
 
-CACHE_FILE      = os.path.join(PROCESSED_DIR, "potato_dataset_cache.pkl")
-SPLITS_FILE     = os.path.join(PROCESSED_DIR, "potato_splits.pkl")
-MODEL_H5        = os.path.join(ML_DIR, "potato_mobilenet.h5")
-MODEL_TFLITE    = os.path.join(ML_DIR, "potato_model.tflite")
+POTATO_CACHE_FILE      = os.path.join(PROCESSED_DIR, "potato_dataset_cache.pkl")
+POTATO_SPLITS_FILE     = os.path.join(PROCESSED_DIR, "potato_splits.pkl")
+POTATO_MODEL           = os.path.join(ML_DIR, "potato_mobilenet.keras")
+POTATO_MODEL_BEST      = os.path.join(ML_DIR, "potato_mobilenet_v2.keras")
+
+POTATO_MODEL_TFLITE    = os.path.join(ML_DIR, "potato_model.tflite")
+POTATO_MODEL_META      = os.path.join(ML_DIR, "potato_mobilenet_meta.json")
 
 # === DATASET ===
-CLASSES = [
+POTATOES_CLASSES = [
     "Potato___Early_blight",
     "Potato___Late_blight",
     "Potato___healthy",
 ]
-CLASS_DISPLAY = {
+POTATOES_CLASS_DISPLAY = {
     "Potato___Early_blight": "Early Blight",
     "Potato___Late_blight":  "Late Blight",
     "Potato___healthy":      "Healthy",
 }
 # ESP32 firmware will use these integer IDs
-CLASS_IDS = {cls: idx for idx, cls in enumerate(CLASSES)}
+CLASS_IDS = {cls: idx for idx, cls in enumerate(POTATOES_CLASSES)}
 
 # === IMAGE ===
 IMG_SIZE = 96          # 96x96 for ESP32-CAM
