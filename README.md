@@ -162,151 +162,58 @@ All classes achieve AUC > 0.98, confirming strong discriminative ability.
 
 ## Project Structure
 
-
-```mermaid
-flowchart TB
-
-    %% =========================
-    %% PROJECT ROOT
-    %% =========================
-
-    ROOT[" Plant Disease Classifier"]
-
-    %% =========================
-    %% MAIN COMPONENTS
-    %% =========================
-
-    ROOT --> DATA[" data<br/>Datasets & Processed Data"]
-    ROOT --> SRC[" src<br/>Machine Learning Pipeline"]
-    ROOT --> NB[" notebooks<br/>Experiments & Analysis"]
-    ROOT --> PY[" python<br/>Runtime & Integration"]
-    ROOT --> ML[" ml<br/>Model Artifacts"]
-    ROOT --> FW[" firmware<br/>Embedded Deployment"]
-    ROOT --> DOCS[" docs<br/>Results & Documentation"]
-
-    %% =========================
-    %% DATA
-    %% =========================
-
-    DATA --> RAW["Raw Dataset"]
-    DATA --> PROC["Processed Data"]
-    DATA --> SPLITS["Train / Validation / Test Splits"]
-
-    %% =========================
-    %% MACHINE LEARNING PIPELINE
-    %% =========================
-
-    SRC --> PRE["preprocessing.py<br/>Data Preparation"]
-    SRC --> AUG["augmentation.py<br/>Data Augmentation"]
-    SRC --> TRAIN["train.py<br/>Model Training"]
-    SRC --> EVAL["evaluate.py<br/>Evaluation & Metrics"]
-    SRC --> PRED["predict.py<br/>Inference"]
-    SRC --> CONVERT["convert_tflite.py<br/>Edge Conversion"]
-    SRC --> CONFIG["config.py<br/>Project Configuration"]
-
-    %% =========================
-    %% EXPERIMENTS
-    %% =========================
-
-    NB --> POTATO[" Potato<br/>Experiments"]
-    NB --> TOMATO[" Tomato<br/>Experiments"]
-
-    POTATO --> POTATO_LOAD["Dataset Loading"]
-    POTATO --> POTATO_TRAIN["Model Training"]
-    POTATO --> POTATO_ERROR["Error Analysis"]
-
-    TOMATO --> TOMATO_LOAD["Dataset Loading"]
-    TOMATO --> TOMATO_TRAIN["Model Training"]
-    TOMATO --> TOMATO_ERROR["Error Analysis"]
-
-    %% =========================
-    %% MODEL ARTIFACTS
-    %% =========================
-
-    ML --> KERAS["MobileNetV2<br/>Keras Models"]
-    ML --> TFLITE["TensorFlow Lite<br/>Models"]
-    ML --> META["Model Metadata<br/>JSON"]
-
-    %% =========================
-    %% PYTHON INTEGRATION
-    %% =========================
-
-    PY --> CAMERA["live_camera_classifier.py<br/>Real-Time Inference"]
-    PY --> MQTT["mqtt_logger.py<br/>MQTT Prediction Logging"]
-
-    %% =========================
-    %% EMBEDDED DEPLOYMENT
-    %% =========================
-
-    FW --> ESP32["ESP32<br/>Embedded Classifier"]
-    FW --> HEADER["model.h<br/>Embedded Model"]
-
-    %% =========================
-    %% DOCUMENTATION
-    %% =========================
-
-    DOCS --> HISTORY["Training History"]
-    DOCS --> CONF["Confusion Matrix"]
-    DOCS --> ROC["ROC Curves"]
-    DOCS --> ERRORS["Misclassified Images"]
-
-    %% =========================
-    %% FLOW CONNECTIONS
-    %% =========================
-
-    DATA --> SRC
-    SRC --> ML
-    ML --> PY
-    ML --> FW
-    SRC --> DOCS
 ```
-
-###  Machine Learning Workflow
-
-```mermaid
-flowchart LR
-
-    A[" PlantVillage Dataset"]
-    B[" Preprocessing"]
-    C[" Dataset Splitting"]
-    D[" Data Augmentation"]
-    E[" MobileNetV2"]
-    F[" Evaluation"]
-    G[" Error Analysis"]
-    H[" Edge Deployment"]
-
-    A --> B
-    B --> C
-    C --> D
-    D --> E
-    E --> F
-    F --> G
-    F --> H
-
-    H --> I[" TensorFlow Lite"]
-    I --> J[" ESP32"]
-```
-
-###  Repository Organization
-
-| Component       | Purpose                                  |
-| --------------- | ---------------------------------------- |
-|  `src/`       | Core machine-learning pipeline           |
-|  `notebooks/` | Experiments, training and error analysis |
-|  `data/`      | Dataset and processed data               |
-|  `ml/`        | Trained models and deployment artifacts  |
-|  `python/`    | Real-time inference and MQTT integration |
-|  `firmware/`  | ESP32 embedded deployment                |
-|  `docs/`      | Training results and visual analysis     |
-
-```
-
-**One important thing:** I would use **both diagrams**, but give them different jobs:
-
-- **Project Architecture** → shows how your repository is organized.
-- **Machine Learning Workflow** → shows the actual engineering pipeline.
-
-That is much stronger for your GitHub portfolio because someone reviewing it can understand **both the software architecture and the ML workflow without digging through every folder.**
+plant-disease-classifier/
+│
+├── README.md
+├── requirements.txt
+├── .gitignore
+│
+├── src/
+│   ├── __init__.py
+│   ├── config.py
+│   ├── preprocessing.py
+│   ├── augmentation.py
+│   ├── train.py
+│   ├── evaluate.py
+│   ├── predict.py
+│   └── convert_tflite.py
+│
+├── notebooks/
+│   ├── 01_load_potato_dataset.ipynb
+│   ├── 02_train_potato.ipynb
+│   ├── 03_potato_error_analysis.ipynb
+│   ├── 04_load_tomato_dataset.ipynb
+│   ├── 05_train_tomato.ipynb
+│   └── 06_tomato_error_analysis.ipynb
+│
+├── python/
+│   ├── live_camera_classifier.py
+│   └── mqtt_logger.py
+│
+├── firmware/
+│   └── potato_classifier/
+│       ├── potato_classifier.ino
+│       └── model.h
+│
+├── ml/
+│   ├── potato_mobilenet_v2.keras
+│   ├── tomato_mobilenet_v2.keras
+│   ├── potato_mobilenet_meta.json
+│   ├── tomato_mobilenet_meta.json
+│   ├── tomato_model.tflite
+│   └── tomato_model.h
+│
+├── docs/
+│   ├── tomato_training_history.png
+│   ├── tomato_error_confusion.png
+│   ├── tomato_roc_curves.png
+│   └── tomato_misclassified.png
+│
+└── data/
+    ├── kaggle_plantvillage/
+    ├── processed/
+    └── raw/
 ```
 
 
