@@ -67,16 +67,23 @@ This became the primary motivation for switching to **tomato**.
 
 
 ##  System Architecture
-┌──────────────┐ ┌───────────────┐ ┌──────────────┐ ┌────────────┐
-│ Dataset │───▶│ Preprocessing│───▶│ Training │───▶│ TFLite │
-│ (Kaggle) │ │ + Augment. │ │ (MobileNet) │ │ Export │
-└──────────────┘ └───────────────┘ └──────────────┘ └─────┬──────┘
-│
-▼
-┌──────────────┐ ┌───────────────┐ ┌──────────────┐ ┌────────────┐
-│ Dashboard │◀───│ MQTT / Serial│◀───│ Edge Infer. │◀───│ ESP32-CAM │
-│ (Streamlit) │ │ (Metadata) │ │ (INT8) │ │ Firmware │
-└──────────────┘ └───────────────┘ └──────────────┘ └────────────┘
+
+
+```
+
+┌────────────────┐     ┌───────────────────┐     ┌────────────────┐     ┌──────────────┐
+│    Dataset     │────▶│   Preprocessing   │────▶│    Training    │────▶│    TFLite    │
+│    (Kaggle)    │     │   + Augmentation  │     │   (MobileNet)  │     │    Export    │
+└────────────────┘     └───────────────────┘     └────────────────┘     └──────┬───────┘
+                                                                                │
+                                                                                ▼
+┌────────────────┐     ┌───────────────────┐     ┌────────────────┐     ┌──────────────┐
+│   Dashboard    │◀────│    MQTT / Serial  │◀────│ Edge Inference │◀────│   ESP32-CAM  │
+│   (Streamlit)  │     │     (Metadata)    │     │     (INT8)     │     │   Firmware   │
+└────────────────┘     └───────────────────┘     └────────────────┘     └──────────────┘
+
+
+```
 
 
 ---
@@ -196,7 +203,7 @@ plant-disease-classifier/
 │       ├── potato_classifier.ino
 │       └── model.h
 │
-├── ml/
+├── ml/ # Saved models (gitignored)
 │   ├── potato_mobilenet_v2.keras
 │   ├── tomato_mobilenet_v2.keras
 │   ├── potato_mobilenet_meta.json
@@ -210,7 +217,7 @@ plant-disease-classifier/
 │   ├── tomato_roc_curves.png
 │   └── tomato_misclassified.png
 │
-└── data/
+└── data/# Datasets (gitignored)
     ├── kaggle_plantvillage/
     ├── processed/
     └── raw/
