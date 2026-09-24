@@ -69,8 +69,6 @@ This became the primary motivation for switching to **tomato**.
 ##  System Architecture
 
 
-```
-
 <p align="center">
   <img 
     src="docs/system_architecture.svg" 
@@ -78,8 +76,6 @@ This became the primary motivation for switching to **tomato**.
     width="850"
   >
 </p>
-
-```
 
 
 ---
