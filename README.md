@@ -71,17 +71,13 @@ This became the primary motivation for switching to **tomato**.
 
 ```
 
-┌────────────────┐     ┌───────────────────┐     ┌────────────────┐     ┌──────────────┐
-│    Dataset     │────▶│   Preprocessing   │────▶│    Training    │────▶│    TFLite    │
-│    (Kaggle)    │     │   + Augmentation  │     │   (MobileNet)  │     │    Export    │
-└────────────────┘     └───────────────────┘     └────────────────┘     └──────┬───────┘
-                                                                                │
-                                                                                ▼
-┌────────────────┐     ┌───────────────────┐     ┌────────────────┐     ┌──────────────┐
-│   Dashboard    │◀────│    MQTT / Serial  │◀────│ Edge Inference │◀────│   ESP32-CAM  │
-│   (Streamlit)  │     │     (Metadata)    │     │     (INT8)     │     │   Firmware   │
-└────────────────┘     └───────────────────┘     └────────────────┘     └──────────────┘
-
+<p align="center">
+  <img 
+    src="docs/system_architecture.svg" 
+    alt="Plant Disease Classifier System Architecture"
+    width="850"
+  >
+</p>
 
 ```
 
@@ -212,6 +208,7 @@ plant-disease-classifier/
 │   └── tomato_model.h
 │
 ├── docs/
+│   ├── System Architecture.svg
 │   ├── tomato_training_history.png
 │   ├── tomato_error_confusion.png
 │   ├── tomato_roc_curves.png
